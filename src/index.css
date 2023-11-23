@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 input[type="color"] {
-  -webkit-appearance: none;
+  /* -webkit-appearance: none; */
   border: none;
   width: 32px;
   height: 32px;

@@ -39,7 +39,7 @@ function App() {
     <>
     <section className='w-full m-auto flex justify-center bg-slate-400'>
       <div className='bg-green-400 w-2/3'>
-        <div className={`w-5 h-5 bg-[${generatedColors[0]}]`} style={{backgroundColor: `${generatedColors[0]}`}}></div>
+        {/* <div className={`w-5 h-5 bg-[${!!generatedColors[0] && generatedColors[0]}]`} style={{backgroundColor: `${generatedColors[0]}`}}></div> */}
         <h1 className='text-5xl text-center'>Color Palette Generator</h1>
         <Palletes />
       </div>

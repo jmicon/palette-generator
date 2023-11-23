@@ -2,10 +2,11 @@ import { createContext, useState } from 'react';
 
 const ColorContext = createContext([]);
 
-export const ColorProvider = ({}) => {
+export const ColorProvider = ({children}) => {
     const [generatedColors, setGeneratedColors] = useState([])
     const [myColors, setMyColors] = useState(["N","N","N","N","N"])
-  
+    
+
 
     return (
         <ColorContext.Provider value={{generatedColors, setGeneratedColors, myColors, setMyColors}}>
