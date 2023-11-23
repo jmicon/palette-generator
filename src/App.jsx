@@ -1,14 +1,11 @@
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import './App.css'
 import Palletes from './components/Palletes'
 import { useEffect } from 'react'
-import ColorContext from './context/ColorContext'
 
 function App() {
-  // const [generatedColors, setGeneratedColors] = useState([])
-  // const [myColors, setMyColors] = useState(["N","N","N","N","N"])
-
-  const {generatedColors, setGeneratedColors, myColors, setMyColors} = useContext(ColorContext)
+  const [generatedColors, setGeneratedColors] = useState([])
+  const [myColors, setMyColors] = useState(["N","N","N","N","N"])
 
   console.log(generatedColors[0], "yes");
 
