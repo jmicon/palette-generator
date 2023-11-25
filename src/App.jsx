@@ -1,13 +1,12 @@
-import { useState } from 'react'
-import './App.css'
+import { useState, useContext } from 'react'
 import Palletes from './components/Palletes'
 import { useEffect } from 'react'
+import ColorContext from './context/ColorContext'
+import ColorSelectBlock from './components/ColorSelectBlock'
+import ColorPaletteBlock from './components/ColorPaletteBlock'
 
 function App() {
-  const [generatedColors, setGeneratedColors] = useState([])
-  const [myColors, setMyColors] = useState(["N","N","N","N","N"])
-
-  console.log(generatedColors[0], "yes");
+  const {generatedColors, setGeneratedColors, myColors, setMyColors, rgbToHex, setSelectBlockColors} = useContext(ColorContext)
 
   const generatePalette = async () => {
     const response = await fetch(`http://colormind.io/api/`, {
@@ -18,96 +17,56 @@ function App() {
       })
     })
     const palette = await response.json()
-    console.log(palette);
-    setGeneratedColors(palette.result)
-  }
+    console.log(palette.result, "pp");
 
-  // Change this so it works in a component with index variables
-  const myColorsArray = (color, index) => {
-    const newArray = [...myColors]
-
-    newArray[index] = color
-
-    setMyColors(newArray)
+    const hexArray = rgbToHex(palette.result)
+    setGeneratedColors(hexArray)
   }
 
   const resetPalette = () => {
     setMyColors(["N","N","N","N","N"])
+    setSelectBlockColors(["N","N","N","N","N"])
   }
   
   return (
     <>
-    <section className='w-full m-auto flex justify-center bg-slate-400'>
-      <div className='bg-green-400 w-2/3'>
-        {/* <div className={`w-5 h-5 bg-[${!!generatedColors[0] && generatedColors[0]}]`} style={{backgroundColor: `${generatedColors[0]}`}}></div> */}
-        <h1 className='text-5xl text-center'>Color Palette Generator</h1>
-        <Palletes />
+    <section className='m-auto border border-red-600 max-w-[1279px]'>
+      <div className='flex justify-center border'>
+        <div className='border border-green-600 w-full'>
+          {/* <div className={`w-5 h-5 bg-[${!!generatedColors[0] && generatedColors[0]}]`} style={{backgroundColor: `${generatedColors[0]}`}}></div> */}
+          {/* <h1 className='text-5xl text-center py-6'>Generate a Color Palette</h1> */}
+          <Palletes />
+        </div>
       </div>
 
-    </section>
-      <div className='text-center'>
-        <h2>colors to include</h2>
+      <div className='text-center border border-blue-400 m-auto'>
 
 {/* Blue color block section */}
-        <div className='flex justify-around'>
-          <div>
-            <div className='h-9 w-9 bg-blue-500'></div>
-            {/* Color variables that create the palette used here. Sort the palette, then this will be easy */}
-            <p>#47934</p>
-          </div>
-          <div>
-            <div className='h-9 w-9 bg-blue-500'></div>
-            <p>#47934</p>
-          </div>
-          <div>
-            <div className='h-9 w-9 bg-blue-500'></div>
-            <p>#47934</p>
-          </div>
-          <div>
-            <div className='h-9 w-9 bg-blue-500'></div>
-            <p>#47934</p>
-          </div>
-          <div>
-            <div className='h-9 w-9 bg-blue-500'></div>
-            <p>#47934</p>
-          </div>
+        <div className='flex justify-center flex-wrap gap-3 pt-6'>
+          <ColorPaletteBlock genBlockIndex={0}/>
+          <ColorPaletteBlock genBlockIndex={1}/>
+          <ColorPaletteBlock genBlockIndex={2}/>
+          <ColorPaletteBlock genBlockIndex={3}/>
+          <ColorPaletteBlock genBlockIndex={4}/>
         </div>
 {/* Click on empty box to change color which adds it to the index 0-4 of the myColors state array */}
         <div className='mt-5'>
-          <h2>Include colors</h2>
-          <div className='flex justify-around'>
-            <div>
-            <input type="color" id="colorPicker" name="colorPicker" value={myColors[0] === "N" ? "#CCCCCC" : myColors[0]} onChange={color => myColorsArray(color.target.value, 0)} 
-              className='h-9 w-9 p-0 rounded' style={{backgroundColor: `${myColors[0]}`}} 
-            />
-            {/* <div className='h-9 w-9 p-0 rounded' style={{backgroundColor: `${myColors[0]}`}}></div> */}
-              {/* Color variables that create the palette used here. Sort the palette, then this will be easy */}
-              <p>{myColors[0] === "N" ? "#" : myColors[0]}</p>
-              {/* <input type="text" value={myColors[0] === "N" ? "#" : myColors[0]} onChange={color => myColorsArray(color.target.value, 0)}/> */}
-            </div>
-            <div>
-              <div className='h-9 w-9 border border-black'></div>
-              <p>EMPTY</p>
-            </div>
-            <div>
-              <div className='h-9 w-9 border border-black'></div>
-              <p>EMPTY</p>
-            </div>
-            <div>
-              <div className='h-9 w-9 border border-black'></div>
-              <p>EMPTY</p>
-            </div>
-            <div>
-              <div className='h-9 w-9 border border-black'></div>
-              <p>EMPTY</p>
-            </div>
+          <h2 className='text-2xl max-w-xs m-auto'>Influence The Palette</h2>
+          <div className='flex justify-center flex-wrap pt-4'>
+            <ColorSelectBlock blockIndex={0} />
+            <ColorSelectBlock blockIndex={1} />
+            <ColorSelectBlock blockIndex={2} />
+            <ColorSelectBlock blockIndex={3} />
+            <ColorSelectBlock blockIndex={4} />
           </div>
 
         </div>
-        <button className='bg-green-400 p-3 rounded mx-3' onClick={generatePalette}>Generate New Palette</button>
-        <button className='bg-green-400 p-3 rounded mx-3' onClick={resetPalette}>reset includeed colors</button>
+        <button className='bg-green-400 p-3 rounded mx-3 my-6 ' onClick={generatePalette}>Generate New Palette</button>
+        <button className='bg-green-400 p-3 rounded mx-3 my-6' onClick={resetPalette}>Reset</button>
 
       </div>
+    </section>
+
     </>
   )
 }
