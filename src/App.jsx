@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react'
-import Palletes from './components/Palletes'
+import Palettes from './components/Palettes'
 import { useEffect } from 'react'
 import ColorContext from './context/ColorContext'
 import ColorSelectBlock from './components/ColorSelectBlock'
@@ -35,7 +35,7 @@ function App() {
         <div className='w-full'>
           {/* <div className={`w-5 h-5 bg-[${!!generatedColors[0] && generatedColors[0]}]`} style={{backgroundColor: `${generatedColors[0]}`}}></div> */}
           {/* <h1 className='text-5xl text-center py-6'>Generate a Color Palette</h1> */}
-          <Palletes />
+          <Palettes />
         </div>
       </div>
 

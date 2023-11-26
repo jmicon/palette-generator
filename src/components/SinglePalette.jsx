@@ -1,13 +1,17 @@
 import { useState, useContext } from 'react'
 import ColorContext from '../context/ColorContext'
 
-const SinglePallete = ({index, height}) => {
+const SinglePalette = ({index, height}) => {
     const [hovering, setHovering] = useState(false)
     const {generatedColors} = useContext(ColorContext)
 
+    console.log("#" + generatedColors[index], height);
+
   return (
     <>
-        <div className={`text-white duration-150 absolute z-20 pl-2 ${hovering ? "opacity-100" : "opacity-0"}`}
+    {/* <div className='border border-black h-[${height}] '> */}
+
+        <div className={`text-white duration-150 z-20 absolute pl-2 ${hovering ? "opacity-100" : "opacity-0"}`}
             onMouseEnter={() => setHovering(true)} 
             onMouseLeave={() => setHovering(false)}>
                 <b>{"#" + generatedColors[index]}</b></div>
@@ -17,8 +21,9 @@ const SinglePallete = ({index, height}) => {
             onMouseLeave={() => setHovering(false)} 
             style={{backgroundColor: `#${generatedColors[index]}`}}>
         </div>
+    {/* </div> */}
     </>
   )
 }
 
-export default SinglePallete
+export default SinglePalette
