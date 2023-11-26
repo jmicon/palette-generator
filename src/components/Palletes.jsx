@@ -1,6 +1,7 @@
 import React, {useContext} from 'react'
 import ColorContext from '../context/ColorContext'
 import { useState } from 'react'
+import SinglePallete from './SinglePallete'
 
 const Palletes = () => {
     const [hovering, setHovering] = useState(false)
@@ -9,14 +10,12 @@ const Palletes = () => {
 
     return (
         <>
-            <div className='h-96 max-w-[400px] border m-auto'>
-                <div className='w-full h-[37.5%] flex justify-center content-center items-end' onMouseEnter={() => setHovering(true)} onMouseLeave={() => setHovering(false)} style={{backgroundColor: `#${generatedColors[0]}`}}>
-                    {hovering && <div>{"#" + generatedColors[0]}</div> }
-                </div>
-                <div className='w-full h-[25%]' style={{backgroundColor: `#${generatedColors[1]}`}}></div>
-                <div className='w-full h-[12.5%]' style={{backgroundColor: `#${generatedColors[2]}`}}></div>
-                <div className='w-full h-[12.5%]' style={{backgroundColor: `#${generatedColors[3]}`}}></div>
-                <div className='w-full h-[12.5%]' style={{backgroundColor: `#${generatedColors[4]}`}}></div>
+            <div className='h-96 max-w-[400px] m-auto border'>
+                <SinglePallete index={0} height={"37.5%"}/>
+                <SinglePallete index={1} height={"25%"}/>
+                <SinglePallete index={2} height={"12.5%"}/>
+                <SinglePallete index={3} height={"12.5%"}/>
+                <SinglePallete index={4} height={"12.5%"}/>
             </div>
 
         </>
