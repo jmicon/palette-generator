@@ -1,12 +1,8 @@
 import React from 'react'
 import SinglePalette from './SinglePalette'
-import { useState, useContext } from 'react'
-import ColorContext from '../context/ColorContext'
 
 
 const Palettes = () => {
-    const [hovering, setHovering] = useState(false)
-    const {generatedColors} = useContext(ColorContext)
 
     return (
         <>
