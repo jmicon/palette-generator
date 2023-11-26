@@ -14,9 +14,6 @@ const ColorSelectBlock = ({ blockIndex }) => {
 
         setMyColors(newRgbArray)
         setSelectBlockColors(newHexArray)
-
-        console.log(myColors, "myColors");
-        console.log(selectBlockColors, "selectBlockColors");
       }
 
   return (

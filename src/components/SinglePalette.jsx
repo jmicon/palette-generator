@@ -5,8 +5,6 @@ const SinglePalette = ({index, height}) => {
     const [hovering, setHovering] = useState(false)
     const {generatedColors} = useContext(ColorContext)
 
-    console.log("#" + generatedColors[index], height);
-
   return (
     <>
     {/* <div className='border border-black h-[${height}] '> */}

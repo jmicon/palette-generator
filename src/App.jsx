@@ -17,7 +17,6 @@ function App() {
       })
     })
     const palette = await response.json()
-    console.log(palette.result, "pp");
 
     const hexArray = rgbToHex(palette.result)
     setGeneratedColors(hexArray)
@@ -62,7 +61,7 @@ function App() {
         </div>
 
         <button className='border border-gray-400 hover:bg-gray-200 duration-100 p-3 rounded mx-3 my-3' onClick={generatePalette}>Generate New Palette</button>
-        <button className='bg-gray-400 hover:bg-gray-300 duration-100 p-3 rounded mx-3 my-3' onClick={resetPalette}>Reset</button>
+        <button className='bg-gray-300 hover:bg-gray-200 duration-100 p-3 rounded mx-3 my-3' onClick={resetPalette}>Reset</button>
 
       </div>
       <div className='py-4'></div>
