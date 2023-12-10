@@ -7,8 +7,6 @@ const SinglePalette = ({index, height}) => {
 
   return (
     <>
-    {/* <div className='border border-black h-[${height}] '> */}
-
         <div className={`text-white duration-150 z-20 absolute pl-2 ${hovering ? "opacity-100" : "opacity-0"}`}
             onMouseEnter={() => setHovering(true)} 
             onMouseLeave={() => setHovering(false)}>
@@ -19,7 +17,6 @@ const SinglePalette = ({index, height}) => {
             onMouseLeave={() => setHovering(false)} 
             style={{backgroundColor: `#${generatedColors[index]}`}}>
         </div>
-    {/* </div> */}
     </>
   )
 }
