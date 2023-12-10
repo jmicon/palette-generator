@@ -9,9 +9,7 @@ const ColorPaletteBlock = ({genBlockIndex}) => {
             <div className='flex justify-center py-2'>
               <div className='h-16 w-16 border hover:scale-95 duration-75' style={{backgroundColor: `#${generatedColors[genBlockIndex]}`}}></div>
             </div>
-            {/* Color variables that create the palette used here. Sort the palette, then this will be easy */}
             <p className='min-w-[6rem]'>{"#" + generatedColors[genBlockIndex]}</p>
-            {/* <input type="text" name="" id="" className='min-w-[6rem] text-center' value={"#" + generatedColors[genBlockIndex]} /> */}
         </div>
 
   )

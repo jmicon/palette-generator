@@ -32,15 +32,12 @@ function App() {
     <section className='m-auto max-w-[1279px] pt-3 md:pt-0'>
       <div className='flex justify-center'>
         <div className='w-full'>
-          {/* <div className={`w-5 h-5 bg-[${!!generatedColors[0] && generatedColors[0]}]`} style={{backgroundColor: `${generatedColors[0]}`}}></div> */}
-          {/* <h1 className='text-5xl text-center py-6'>Generate a Color Palette</h1> */}
           <Palettes />
         </div>
       </div>
 
       <div className='text-center m-auto'>
 
-{/* Blue color block section */}
         <div className='flex justify-center flex-wrap gap-3 pt-6'>
           <ColorPaletteBlock genBlockIndex={0}/>
           <ColorPaletteBlock genBlockIndex={1}/>
@@ -48,9 +45,8 @@ function App() {
           <ColorPaletteBlock genBlockIndex={3}/>
           <ColorPaletteBlock genBlockIndex={4}/>
         </div>
-{/* Click on empty box to change color which adds it to the index 0-4 of the myColors state array */}
         <div>
-          <h2 className='text-2xl max-w-xs m-auto'>Influence The Palette</h2>
+          <h2 className='text-2xl max-w-xs m-auto'>Influence Your Palette</h2>
           <div className='flex justify-center flex-wrap pt-4 gap-3'>
             <ColorSelectBlock blockIndex={0} />
             <ColorSelectBlock blockIndex={1} />

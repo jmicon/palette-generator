@@ -22,7 +22,6 @@ const ColorSelectBlock = ({ blockIndex }) => {
             <input type="color" id="colorPicker" name="colorPicker" value={selectBlockColors[blockIndex] === "N" ? "#CCCCCC" : selectBlockColors[blockIndex]} onChange={color => myColorsArray(color.target.value, blockIndex)} className='cursor-pointer'/>
         </div>
         <p className='min-w-[6rem]'>{selectBlockColors[blockIndex] === "N" ? "#000000" : selectBlockColors[blockIndex]}</p>
-        {/* <input type="text" value={myColors[blockIndex] === "N" ? "#" : myColors[blockIndex]} onChange={color => myColorsArray(color.target.value, blockIndex)}/> */}
     </div>
 )
 }
